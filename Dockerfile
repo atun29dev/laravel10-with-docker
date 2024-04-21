@@ -31,9 +31,11 @@ RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 RUN rm -rf composer-setup.php
 
 # Installation NodeJS
-RUN curl -sL https://rpm.nodesource.com/setup_8.x | bash -
-RUN yum install -y nodejs
-RUN npm i -g nodemon
+# Installation Node.js with NVM
+RUN yum install -y gcc-c++ make && \
+    curl -sL https://rpm.nodesource.com/setup_16.x | bash - && \
+    yum install nodejs -y && \
+    npm install -g nodemon
 
 # Copying custom Apache configuration into container
 COPY ./docker/httpd.conf /etc/httpd/conf/httpd.conf
