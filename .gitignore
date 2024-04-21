@@ -17,3 +17,7 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+/db
+/docker/logs/access_log
+/docker/logs/error_log
+/docker/logs/cronjob_logs.txt
