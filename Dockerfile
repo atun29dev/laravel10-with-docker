@@ -14,7 +14,7 @@ RUN yum install https://rpms.remirepo.net/enterprise/remi-release-7.rpm yum-util
 # Installation PHP extensions
 # The zlib1g-dev, libzip-dev, libpng-dev are necessary to enable both `gd` and `zip` extension
 # The libicu-dev is necessary to enable `intl` extension
-RUN yum install wget curl unzip crontabs zlib1g-dev libzip-dev libpng-dev libicu-dev -y
+RUN yum install git wget curl unzip crontabs zlib1g-dev libzip-dev libpng-dev libicu-dev -y
 
 # Installation Apache
 RUN yum install httpd httpd-tools -y
