@@ -22,3 +22,4 @@ yarn-error.log
 /docker/logs/error_log
 /docker/logs/cronjob_logs.txt
 /.husky
+.php-cs-fixer.cache
