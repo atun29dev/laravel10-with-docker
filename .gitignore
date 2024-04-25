@@ -21,3 +21,4 @@ yarn-error.log
 /docker/logs/access_log
 /docker/logs/error_log
 /docker/logs/cronjob_logs.txt
+/.husky
