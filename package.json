@@ -7,7 +7,7 @@
         "prepare": "husky install && test -f .husky/pre-commit || npx husky add .husky/pre-commit 'npx lint-staged'"
     },
     "lint-staged": {
-        "**/*.php": "docker-compose exec web bash -c \"cd /var/www/html/ && php vendor/bin/php-cs-fixer fix --config .php-cs-fixer.php\""
+        "**/*.php": "php vendor/bin/php-cs-fixer fix --config .php-cs-fixer.php"
     },
     "devDependencies": {
         "axios": "^1.6.4",
