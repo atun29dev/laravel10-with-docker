@@ -10,6 +10,6 @@ return [
         ]
     ],
     'error' => [
-        //
+        'api_environment' => 'The API environment.',
     ]
 ];
