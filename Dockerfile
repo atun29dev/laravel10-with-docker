@@ -4,11 +4,12 @@ FROM centos:7.5.1804
 ENV APACHE_DOCUMENT_ROOT ${APACHE_DOCUMENT_ROOT:-/var/www/html/public}
 
 # Adding PHP 8.1 repository
+# If you change PHP version, replaces `remi-php82` to your version
 RUN yum install epel-release -y
 RUN sed -i "s/metalink/#metalink/" /etc/yum.repos.d/epel.repo
 RUN sed -i "s/#baseurl=http:\/\/download/baseurl=https:\/\/archives/" /etc/yum.repos.d/epel.repo
 RUN yum install https://rpms.remirepo.net/enterprise/remi-release-7.rpm yum-utils -y &&  \
-    yum-config-manager --enable remi-php81 && \
+    yum-config-manager --enable remi-php82 && \
     yum update -y
 
 # Installation PHP extensions
