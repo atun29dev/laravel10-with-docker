@@ -39,7 +39,7 @@ docker-compose up
 
 - Host: http://localhost
 
-### PHP scripts
+### Steps build
 _Make sure the web service is running_
 
 #### Start bash shell in the specified directory
