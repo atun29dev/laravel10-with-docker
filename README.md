@@ -10,7 +10,7 @@ This repository contains the source code for Laravel 10 with Docker. It includes
 * When you create a name for the Pull Request, please help set a meaningful name and set description if needed. Should capitalize the first letter and do not use special characters.
 
 ## Tech stacks
-- PHP 8.1.x
+- PHP 8.2.x
 - Laravel 10.x
 - NodeJS 16.20.x
 - NPM 8.19.x
