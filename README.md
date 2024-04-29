@@ -1,6 +1,8 @@
 # README #
 This repository contains the source code for Laravel 10 with Docker. It includes running the source code by Apache, using Cronjob, and using pre-commit to automatically check code syntax and formatting.
 
+This source code includes configuration for Laravel settings, JWT Auth, and Swagger UI for API development.
+
 ## Note for GIT
 * Please help apply GitFlow for this repository (https://danielkummer.github.io/git-flow-cheatsheet).
 * Example:
@@ -38,6 +40,7 @@ docker-compose up
 ```
 
 - Host: http://localhost
+- API documents: http://localhost/api/v1/docs
 
 ### Steps build
 _Make sure the web service is running_
@@ -61,6 +64,11 @@ npm install
 #### Generation APP_KEY
 ```
 php artisan key:generate
+```
+
+#### Generation JWT_SECRET
+```
+php artisan jwt:secret
 ```
 
 #### Re-configuring cache
