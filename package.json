@@ -4,7 +4,7 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "prepare": "husky install && test -f .husky/pre-commit || npx husky add .husky/pre-commit 'npx lint-staged'"
+        "prepare": "husky install && test -f .husky/pre-commit || npx husky add .husky/pre-commit \"npx lint-staged\""
     },
     "lint-staged": {
         "**/*.php": "php vendor/bin/php-cs-fixer fix --config .php-cs-fixer.php"
