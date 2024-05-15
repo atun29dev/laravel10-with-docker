@@ -3,7 +3,7 @@ FROM centos:7.5.1804
 # Setting environment
 ENV APACHE_DOCUMENT_ROOT ${APACHE_DOCUMENT_ROOT:-/var/www/html/public}
 
-# Adding PHP 8.1 repository
+# Adding PHP 8.2 repository
 # If you change PHP version, replaces `remi-php82` to your version
 RUN yum install epel-release -y
 RUN sed -i "s/metalink/#metalink/" /etc/yum.repos.d/epel.repo
@@ -32,7 +32,6 @@ RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 RUN rm -rf composer-setup.php
 
 # Installation NodeJS
-# Installation Node.js with NVM
 RUN yum install -y gcc-c++ make && \
     curl -sL https://rpm.nodesource.com/setup_16.x | bash - && \
     yum install nodejs -y && \
@@ -54,6 +53,5 @@ ADD ./docker/crontab_script /etc/cron.d/crontab_script
 RUN chmod 0644 /etc/cron.d/crontab_script
 RUN crontab /etc/cron.d/crontab_script
 
-# Keeping container active
 # Running Cronjob and Apache
 CMD ["sh", "-c", "crond && httpd -D FOREGROUND"]
