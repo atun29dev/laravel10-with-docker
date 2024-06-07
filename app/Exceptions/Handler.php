@@ -7,8 +7,10 @@ use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\RecordsNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Session\TokenMismatchException;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpFoundation\Exception\SuspiciousOperationException;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
@@ -79,6 +81,10 @@ class Handler extends ExceptionHandler
             return $this->_authorizationException($e);
         } elseif ($e instanceof ValidationException) {
             return $this->_validationException($e);
+        } elseif ($e instanceof TokenMismatchException) {
+            return $this->_tokenMismatchException($e);
+        } elseif ($e instanceof SuspiciousOperationException) {
+            return $this->_suspiciousOperationException($e);
         } elseif ($e instanceof NotFoundHttpException) {
             return $this->_httpNotFoundException($e);
         } elseif ($e instanceof ModelNotFoundException) {
@@ -143,6 +149,34 @@ class Handler extends ExceptionHandler
         }
 
         return response()->json($this->_formatResponse($msg), Response::HTTP_UNPROCESSABLE_ENTITY);
+    }
+
+    /**
+     * Handle token mismatch exception
+     *
+     * @param TokenMismatchException $exception
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function _tokenMismatchException(TokenMismatchException $exception): \Illuminate\Http\JsonResponse
+    {
+        return response()->json(
+            $this->_formatResponse($exception->getMessage()),
+            419 // Using specified number because HTTP Response not declared
+        );
+    }
+
+    /**
+     * Handle suspicious operation exception
+     *
+     * @param SuspiciousOperationException $exception
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function _suspiciousOperationException(SuspiciousOperationException $exception)
+    {
+        return response()->json(
+            $this->_formatResponse($exception->getMessage()),
+            Response::HTTP_BAD_REQUEST
+        );
     }
 
     /**
