@@ -17,9 +17,9 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-/db
-/docker/logs/access_log
-/docker/logs/error_log
-/docker/logs/cronjob_logs.txt
+/docker/logs/mysql/*.log
+/docker/logs/nginx/*.log
+/docker/logs/php/*.log
+/docker/logs/cron/*.log
 /.husky
 .php-cs-fixer.cache
