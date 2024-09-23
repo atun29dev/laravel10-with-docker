@@ -1,1 +1,0 @@
-* * * * * cd /var/www/html/ && /usr/bin/php artisan schedule:run >> /var/www/html/docker/logs/cronjob_logs.txt 2>&1
