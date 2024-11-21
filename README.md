@@ -1,5 +1,5 @@
 # README #
-This repository contains the source code for Laravel 10 with Docker. It includes running the source code by Apache, using Cronjob, and using pre-commit to automatically check code syntax and formatting.
+This repository contains the source code for Laravel 10 with Docker. It includes running the source code by Nginx, using Cronjob, and using pre-commit to automatically check code syntax and formatting.
 
 ## Note for GIT
 * Please help apply GitFlow for this repository (https://danielkummer.github.io/git-flow-cheatsheet).
@@ -12,8 +12,6 @@ This repository contains the source code for Laravel 10 with Docker. It includes
 ## Tech stacks
 - PHP 8.2.x
 - Laravel 10.x
-- NodeJS 16.20.x
-- NPM 8.19.x
 
 ## Prerequisite
 
@@ -37,14 +35,14 @@ docker-compose build
 docker-compose up
 ```
 
-- Host: http://localhost
+- Host: http://localhost:8000
 
 ### Steps build
 _Make sure the web service is running_
 
-#### Start bash shell in the specified directory
+#### Start bash shell
 ```
-docker-compose exec web bash -c "cd /var/www/html/ && bash"
+docker exec -it laravel10-app sh
 ```
 
 #### Installation PHP's dependencies
@@ -52,20 +50,9 @@ docker-compose exec web bash -c "cd /var/www/html/ && bash"
 composer install
 ```
 
-#### Installation JavaScript's dependencies. _(This is necessary to use pre-commit and more)_
-
-```
-npm install
-```
-
 #### Generation APP_KEY
 ```
 php artisan key:generate
-```
-
-#### Re-configuring cache
-```
-php artisan config:cache
 ```
 
 #### Migration DB
