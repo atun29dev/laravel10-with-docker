@@ -1,5 +1,5 @@
 # README #
-This repository contains the source code for Laravel 10 with Docker. It includes running the source code by Nginx, using Cronjob, and using pre-commit to automatically check code syntax and formatting.
+This repository contains the source code for Laravel 10 with Docker. It includes running the source code by Nginx, using Cronjob, and using pre-commit to automatically check code syntax and formatting and more [features](#features).
 
 ## Note for GIT
 * Please help apply GitFlow for this repository (https://danielkummer.github.io/git-flow-cheatsheet).
@@ -13,10 +13,11 @@ This repository contains the source code for Laravel 10 with Docker. It includes
 - PHP 8.2.x
 - Laravel 10.x
 
-## Prerequisite
+## Your machine's prerequisites
 
 - Docker
 - Docker compose
+- Node.js 20.18.x or other Node.js version
 
 ## Getting started
 
@@ -38,7 +39,7 @@ docker-compose up
 - Host: http://localhost:8000
 
 ### Steps build
-_Make sure the web service is running_
+_Make sure the laravel10-app service is running_
 
 #### Start bash shell
 ```
@@ -59,6 +60,24 @@ php artisan key:generate
 ```
 php artisan migrate
 ```
+
+#### Exit bash shell
+```
+exit
+```
+
+### To use pre-commit
+_Make sure you have Node.js installed on your machine_
+
+#### Installation Node's modules. _(This is necessary to use pre-commit and more)_
+```
+npm install
+```
+
+## Features
+* Export Excel file by template
+  - Endpoint: http://localhost:8000/exports/excel
+  - Controller: `app/Http/Controllers/Web/ExportController.php`
 
 ## Author
 * Name: Tuan Le
