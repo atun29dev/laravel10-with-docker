@@ -54,7 +54,7 @@ services:
             - default-network
 
     db:
-        image: mysql
+        image: mysql:5.7
         container_name: laravel10-mysql
         ports:
             - ${MYSQL_PORT}:3306
@@ -77,7 +77,7 @@ services:
             - default-network
 
     phpmyadmin:
-        image: phpmyadmin/phpmyadmin
+        image: phpmyadmin/phpmyadmin:5.2.1
         container_name: laravel10-phpmyadmin
         depends_on:
             - db
