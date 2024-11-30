@@ -7,9 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Laravel 10 with Docker</title>
     @include('includes.base-css')
+    @yield('head')
 </head>
 <body>
-    @yield('content')
+    @yield('body')
     @include('includes.base-js')
     @yield('script')
 </body>
