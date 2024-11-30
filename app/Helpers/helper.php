@@ -18,3 +18,19 @@ if (!function_exists('add_counting_number_to_identical_file_name')) {
         return $fileNameExistsCountValues[$fileName];
     }
 }
+
+if (!function_exists('sanitize_file_name')) {
+    /**
+     * Handle sanitize file name. Replace all non-printable characters with `-`.
+     *
+     * @param string $fileName
+     * @return array|string|null
+     */
+    function sanitize_file_name(string $fileName): array|string|null
+    {
+        $regexPattern = '/[^\x20-\x7E]/';
+        $sanitizedFileName = preg_replace($regexPattern, '-', $fileName);
+
+        return preg_replace('/-+/', '-', $sanitizedFileName);
+    }
+}

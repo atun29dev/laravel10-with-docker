@@ -118,7 +118,7 @@ class ExampleExcelExport
     {
         // Encode the file name for UTF-8 compatibility
         $encodedFileName = rawurlencode($fileName);
-        $sanitizeFileName = $this->__sanitizeFileName($fileName);
+        $sanitizeFileName = sanitize_file_name($fileName);
 
         $response = new StreamedResponse(function () use ($spreadsheet) {
             $writer = new Xlsx($spreadsheet);
@@ -129,19 +129,5 @@ class ExampleExcelExport
         $response->headers->set('Cache-Control', 'max-age=0');
 
         return $response;
-    }
-
-    /**
-     * Handle sanitize file name. Replace all non-printable characters with `-`.
-     *
-     * @param string $fileName
-     * @return array|string|string[]|null
-     */
-    private function __sanitizeFileName(string $fileName): array|string|null
-    {
-        $regexPattern = '/[^\x20-\x7E]/';
-        $sanitizedFileName = preg_replace($regexPattern, '-', $fileName);
-
-        return preg_replace('/-+/', '-', $sanitizedFileName);
     }
 }
